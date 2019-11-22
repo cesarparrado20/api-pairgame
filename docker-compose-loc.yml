@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:10
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    env_file: ./.envs/.local/.env
+    build:
+      context: ./postgres
+
+  django:
+    build: ./src
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src:/src
+    depends_on:
+      - postgres
+    env_file: ./.envs/.local/.env
+    ports:
+      - "8000:8000"
