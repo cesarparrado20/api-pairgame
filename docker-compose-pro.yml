@@ -16,6 +16,7 @@ services:
       - ./src:/src
     depends_on:
       - postgres
+      - redis
     env_file: ./.envs/.production/.env
 
   nginx:
@@ -43,3 +44,9 @@ services:
     depends_on:
       - nginx
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+  redis:
+    container_name: api_pairgame_redis
+    restart: always
+    image: redis:5.0
+    env_file: ./.envs/.production/.env
