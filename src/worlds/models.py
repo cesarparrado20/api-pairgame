@@ -19,7 +19,7 @@ class Image(models.Model):
     description = models.TextField()
     url = models.URLField()
     consultation_data = models.DateTimeField(auto_now_add=True)
-    world = models.ForeignKey(World, on_delete=models.CASCADE)
+    world = models.ForeignKey(World, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = "image"
