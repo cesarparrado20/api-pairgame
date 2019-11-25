@@ -2,6 +2,8 @@
 
 import os
 
+from celery.schedules import crontab
+
 from .base import *
 
 # Base
@@ -20,5 +22,20 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': ''
+    }
+}
+
+# Celery
+CELERY_BROKER_URL = os.environ["REDIS_URL"]
+CELERY_RESULT_BACKEND = os.environ["REDIS_URL"]
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = 'America/Bogota'
+CELERY_BEAT_SCHEDULE = {
+    'scraping': {
+        'task': 'worlds.tasks.scraping',
+        'schedule': crontab()
     }
 }

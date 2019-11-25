@@ -2,8 +2,7 @@ from django.db import models
 
 
 class World(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = "world"
@@ -11,15 +10,16 @@ class World(models.Model):
         db_table = "worlds"
 
     def __str__(self):
-        return "World: {}".format(self.name)
+        return "World {}".format(self.id)
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=50)
+    id = models.CharField(max_length=50, primary_key=True)
+    title = models.CharField(max_length=200)
     description = models.TextField()
     url = models.URLField()
-    consultation_data = models.DateTimeField(auto_now_add=True)
-    world = models.ForeignKey(World, on_delete=models.CASCADE)
+    publication_date = models.DateField()
+    world = models.ForeignKey(World, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = "image"
@@ -27,4 +27,4 @@ class Image(models.Model):
         db_table = "images"
 
     def __str__(self):
-        return "{} world image".format(self.world.name)
+        return "Image: {}".format(self.id)
