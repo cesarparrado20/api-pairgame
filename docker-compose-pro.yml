@@ -50,3 +50,23 @@ services:
     restart: always
     image: redis:5.0
     env_file: ./.envs/.production/.env
+
+  celery:
+    build: ./src
+    command: celery -A api_pairgame worker -l info
+    env_file: ./.envs/.production/.env
+    volumes:
+      - ./src:/src
+    depends_on:
+      - redis
+      - django
+  
+  celery-beat:
+    build: ./src
+    command: celery -A api_pairgame beat -l info
+    env_file: ./.envs/.production/.env
+    volumes:
+      - ./src:/src
+    depends_on:
+      - redis
+      - django 
