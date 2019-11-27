@@ -6,7 +6,7 @@ from worlds.models import World
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to="avatars")
-    xp_points = models.PositiveIntegerField()
+    xp_points = models.PositiveIntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:

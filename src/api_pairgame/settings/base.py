@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'users',
     'worlds',
 ]
@@ -131,3 +133,19 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + '/media/'
+
+# REST Framework configuration
+
+REST_FRAMEWORK_DEFAULT_RENDERER_CLASSES = [
+    'rest_framework.renderers.JSONRenderer'
+]
+
+REST_FRAMEWORK_DEFAULT_PERMISSION_CLASSES = [
+    'rest_framework.permissions.AllowAny',
+    'rest_framework.permissions.IsAuthenticated'
+]
+
+REST_FRAMEWORK_DEFAULT_AUTHENTICATION_CLASSES = [
+    'rest_framework.authentication.BasicAuthentication',
+    'rest_framework.authentication.TokenAuthentication'
+]

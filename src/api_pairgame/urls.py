@@ -16,12 +16,19 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
 
 from api_pairgame import settings
+from users.views import RegisterAPIView, LoginAPIView
+
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('api/register/', RegisterAPIView.as_view()),
+    path('api/login/', LoginAPIView.as_view()),
 ]
 
 urlpatterns += static(settings.base.STATIC_URL, document_root=settings.base.STATIC_ROOT)
