@@ -5,3 +5,9 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+  - name: automatic delete head branch on merged pull requests
+    conditions:
+      - merged
+      - base!=develop
+    actions:
+      delete_head_branch:
