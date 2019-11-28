@@ -30,5 +30,5 @@ class ProfileWorld(models.Model):
         db_table = "profiles_worlds"
 
     def __str__(self):
-        return "Result of {} in the {} world".format(self.profile.user.username,
-                                                     self.world.name)
+        return "Result of {} in the world #{}".format(self.profile.user.username,
+                                                      self.world.id)
