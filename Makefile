@@ -17,7 +17,7 @@ loc-reset:
 	docker-compose -f docker-compose-loc.yml down -v
 	rm -rf .pgdata/
 loc-test:
-	docker-compose -f docker-compose-loc.yml run --rm django ./manage.py test --settings=api_pairgame.settings.loc
+	docker-compose -f docker-compose-loc.yml run --rm django ./manage.py test --settings=api_pairgame.settings.local
 loc-startapp:
 	docker-compose -f docker-compose-loc.yml run --rm django ./manage.py startapp $(name)
 	sudo chmod 777 -R ./src/$(name)
@@ -42,7 +42,7 @@ pro-reset:
 	docker-compose -f docker-compose-pro.yml down -v
 	rm -rf .pgdata/
 pro-test:
-	docker-compose -f docker-compose-pro.yml run --rm django ./manage.py test --settings=api_pairgame.settings.pro
+	docker-compose -f docker-compose-pro.yml run --rm django ./manage.py test --settings=api_pairgame.settings.production
 pro-restart:
 	docker-compose -f docker-compose-pro.yml restart $(name)
 clean:
