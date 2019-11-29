@@ -13,9 +13,9 @@ DEBUG = os.environ['DEBUG'].lower() in ("yes", "true", "t", "1")
 SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = [
-    "www.api-soft-unillanos-2019.tk",
-    "api-soft-unillanos-2019.tk",
-    "157.245.212.22"
+    "www.pairgame.co",
+    "pairgame.co",
+    "167.99.105.237"
 ]
 
 # Gunicorn configuration

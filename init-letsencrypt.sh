@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(api-soft-unillanos-2019.tk www.api-soft-unillanos-2019.tk)
+domains=(pairgame.co www.pairgame.co)
 rsa_key_size=4096
 data_path="./nginx/certbot"
 email="cesar.parrado.fajardo@unillanos.edu.co" # Adding a valid address is strongly recommended
