@@ -2,8 +2,6 @@ from django.db import models
 
 
 class World(models.Model):
-    description = models.TextField(null=True, blank=True)
-
     class Meta:
         verbose_name = "world"
         verbose_name_plural = "worlds"
@@ -19,7 +17,9 @@ class Image(models.Model):
     description = models.TextField()
     url = models.URLField()
     publication_date = models.DateField()
-    world = models.ForeignKey(World, on_delete=models.CASCADE, null=True)
+    world = models.ForeignKey(
+        World, on_delete=models.CASCADE, null=True, related_name="images"
+    )
 
     class Meta:
         verbose_name = "image"

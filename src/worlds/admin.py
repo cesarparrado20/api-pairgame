@@ -5,8 +5,8 @@ from worlds.models import World, Image
 
 @admin.register(World)
 class WorldAdmin(admin.ModelAdmin):
-    list_display = ["id", "description"]
-    list_display_links = ["id", "description"]
+    list_display = ["id"]
+    list_display_links = ["id"]
     search_fields = ["id"]
 
 
