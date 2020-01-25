@@ -23,7 +23,7 @@ MONTHS = {
 def create_level(images_per_level):
     images = Image.objects.filter(world__isnull=True).values_list("id", flat=True)
     if len(images) == images_per_level:
-        world = World.objects.create(description="N/A")
+        world = World.objects.create()
         Image.objects.filter(id__in=images).update(world_id=world.id)
 
 
