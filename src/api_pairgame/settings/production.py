@@ -15,7 +15,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 ALLOWED_HOSTS = [
     "www.pairgame.co",
     "pairgame.co",
-    "167.99.105.237"
+    "167.99.13.172"
 ]
 
 # Gunicorn configuration
